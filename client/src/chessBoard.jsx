@@ -1,4 +1,5 @@
 import React from 'react';
+import './Chessboard.css';
 
 const Chessboard = () => {
     const pieces = {
@@ -29,7 +30,7 @@ const Chessboard = () => {
 
     return (
         <div className="chessboard-container">
-            <div className="grid grid-cols-8 gap-0">
+            <div className="grid-cols-8 gap-0">
                 {Array.from({ length: 8 }, (_, rowIndex) => (
                     <div key={rowIndex} className="flex">
                         {Array.from({ length: 8 }, (_, colIndex) => (
@@ -51,17 +52,16 @@ const Chessboard = () => {
     function renderChessPiece(rowIndex, colIndex) {
         const pieceType = startingPosition[rowIndex][colIndex];
 
-        if (pieceType) {
-            return (
-                <img
+        return (
+            <div className='w-[84px] h-[84px]'>
+
+                {pieceType && <img
                     src={pieces[pieceType]}
                     alt={pieceType}
                     className="chess-piece w-full h-full object-contain mx-auto"
-                />
-            );
-        }
-
-        return null;
+                />}
+            </div>
+        );
     }
 };
 
